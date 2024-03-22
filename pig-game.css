@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #333;
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  position: relative;
+  width: 70rem;
+  height: 40rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  filter: blur();
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player {
+  flex: 50%;
+  padding: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+  font-weight: bold;
+}
+
+#player1-container,
+#player2-container {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.player-score {
+  font-size: 6rem;
+  margin-bottom: 4rem;
+}
+
+.current {
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  width: 12rem;
+  height: 6rem;
+  color: #fff;
+  background-color: #bf2e6a;
+}
+
+.player-score {
+  color: #9e164f;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  .button {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding: 12px 24px 12px 24px;
+    border-radius: 24px;
+    background-color: #ffffff93;
+    border: none;
+  }
+  .button:hover {
+    background-color: rgba(255, 255, 255, 0.849);
+    cursor: pointer;
+  }
+
+  #new-game {
+    margin-bottom: 330px;
+  }
+  #roll-dice {
+    margin-top: -56px;
+  }
+  #hold {
+    margin-top: 16px;
+  }
+}
+
+.dice {
+  margin-top: -64px;
+  position: absolute;
+  max-width: 124px;
+  max-height: 124px;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
