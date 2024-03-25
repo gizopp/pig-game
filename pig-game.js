@@ -6,7 +6,44 @@ function generateDiceNumber() {
   diceNumber = Math.floor(Math.random() * 6) + 1;
 }
 
-function resetChangePlayer() {
+function hideDices() {
+  for (i = 1; i < 7; i++) {
+    if (!containsHidden("img-dice-" + i)) {
+      addHidden("img-dice-" + i);
+    }
+  }
+}
+
+function containsHidden(id) {
+  document.getElementById(id).classList.contains("hidden");
+}
+
+function addHidden(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+
+function removeHidden(id) {
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function playerWins() {
+  document.getElementById("player-wins").textContent = `Player ${activePlayer} wins!`
+  removeHidden("player-wins");
+  removeHidden("trophy");
+  hideDices();
+}
+
+function newGame() {
+  for (i = 1; i < 3; i++) {
+    document.getElementById("current-score-p" + i).textContent = 0;
+    document.getElementById("player-" + i + "-score").textContent = 0;
+  }
+  hideDices();
+  addHidden("trophy");
+  addHidden("player-wins");
+}
+
+function resetPlayer() {
   document.getElementById("current-score-p" + activePlayer).textContent = 0;
 }
 
@@ -15,56 +52,40 @@ function changePlayer() {
 }
 
 function sumCurrentScore() {
-  console.log(
-    document.getElementById("current-score-p" + activePlayer).textContent
-  );
-  document.getElementById("current-score-p" + activePlayer).textContent +=
-    diceNumber;
+  let currentScore = document.getElementById("current-score-p" + activePlayer);
+  currentScore.textContent = parseInt(currentScore.textContent) + diceNumber;
 }
 
 function holdDice() {
-  console.log(
-    document.getElementById("current-score-p" + activePlayer).textContent
-  );
-  changePlayer();
+  let score = document.getElementById("player-" + activePlayer + "-score");
+  let currentScore = document.getElementById("current-score-p" + activePlayer);
+  let sumScore = parseInt(score.textContent) + parseInt(currentScore.textContent);
+  score.textContent = sumScore < 100 ? sumScore : 100;
+  resetPlayer();
+  if (sumScore >= 100) {
+    playerWins()
+  } else {
+    changePlayer();
+  } 
 }
 
 function rollDice() {
   generateDiceNumber();
-
-  for (i = 1; i < 7; i++) {
-    if (
-      !document.getElementById("img-dice-" + i).classList.contains("hidden")
-    ) {
-      document.getElementById("img-dice-" + i).classList.add("hidden");
-    }
-  }
+  hideDices();
 
   switch (diceNumber) {
     case 1:
-      resetChangePlayer();
-      document.getElementById("img-dice-1").classList.remove("hidden");
+      resetPlayer();
+      changePlayer();
+      removeHidden("img-dice-1");
       break;
     case 2:
-      document.getElementById("img-dice-2").classList.remove("hidden");
-      break;
     case 3:
-      document.getElementById("img-dice-3").classList.remove("hidden");
-      break;
     case 4:
-      document.getElementById("img-dice-4").classList.remove("hidden");
-      break;
     case 5:
-      document.getElementById("img-dice-5").classList.remove("hidden");
-      break;
     case 6:
-      document.getElementById("img-dice-6").classList.remove("hidden");
+      removeHidden("img-dice-" + diceNumber);
+      sumCurrentScore();
       break;
-  }
-
-  if (!diceNumber == 1) {
-    sumCurrentScore();
-  } else {
-    resetChangePlayer();
   }
 }

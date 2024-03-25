@@ -62,7 +62,14 @@ body {
 }
 
 .player-score {
-  color: #9e164f;
+  color: #bf2e6a;
+}
+
+#player-wins-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
 }
 
 #buttons {
@@ -95,7 +102,12 @@ body {
   }
 }
 
-.dice {
+.trophy {
+  min-width: 160px;
+  min-height: 160px; 
+}
+
+.dice, .trophy {
   margin-top: -64px;
   position: absolute;
   max-width: 124px;
@@ -108,4 +120,9 @@ body {
 
 .active {
   background-color: rgba(255, 255, 255, 0.4);
+}
+
+.current-score {
+  padding: 10px;
+  font-size: 48px;
 }
