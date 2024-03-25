@@ -15,7 +15,7 @@
         <span id="player-1-score" class="player-score">0</span>
         <div id="current-player-1" class="current">
           <h4 class="current-title">CURRENT</h4>
-          <span id="current-score-p1">0</span>
+          <span class="current-score" id="current-score-p1">0</span>
         </div>
       </div>
       <div class="player" id="player2-container">
@@ -23,20 +23,23 @@
         <span id="player-2-score" class="player-score">0</span>
         <div id="current-player-2" class="current">
           <h4 class="current-title">CURRENT</h4>
-          <span id="current-score-p2">0</span>
+          <span class="current-score" id="current-score-p2">0</span>
         </div>
       </div>
+      <img src="images/trophy.png" id="trophy" class="trophy hidden" />
       <img src="images/dice-1.png" id="img-dice-1" class="dice hidden" />
       <img src="images/dice-2.png" id="img-dice-2" class="dice hidden" />
       <img src="images/dice-3.png" id="img-dice-3" class="dice hidden" />
       <img src="images/dice-4.png" id="img-dice-4" class="dice hidden" />
       <img src="images/dice-5.png" id="img-dice-5" class="dice hidden" />
       <img src="images/dice-6.png" id="img-dice-6" class="dice hidden" />
+      
       <div id="buttons">
-        <button class="button" id="new-game">🔄 NEW GAME</button>
-        <button class="button" id="roll-dice" onclick="rollDice()">
-          🎲 ROLL DICE
-        </button>
+      <div id="player-wins-container">
+        <h2 id="player-wins" class="hidden">Player 1 wins!</h2>
+      </div>
+        <button class="button" id="new-game" onclick="newGame()">🔄 NEW GAME</button>
+        <button class="button" id="roll-dice" onclick="rollDice()">🎲 ROLL DICE</button>
         <button class="button" id="hold" onclick="holdDice()">🏓 HOLD</button>
       </div>
     </div>
